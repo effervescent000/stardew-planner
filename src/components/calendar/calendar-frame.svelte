@@ -11,7 +11,7 @@
 
 	const SEASONS = ['Spring', 'Summer', 'Fall', 'Winter'];
 	const DAYS_OF_WEEK = ['M', 'T', 'W', 'Th', 'F', 'Sa', 'Su'];
-	const dates = Array.from({ length: 28 }, (_x, i) => i + 1);
+	const dates = Array.from({ length: 28 }, (_x, i) => i);
 </script>
 
 <div class="w-[700px] text-center">
