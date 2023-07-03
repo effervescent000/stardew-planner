@@ -18,7 +18,7 @@
 				{#each bundle.items as item}
 					<ul>
 						<Checkbox checked={item.completed} />
-						{item.name}
+						<span>{item.name}</span>
 					</ul>
 				{/each}
 			</li>
