@@ -10,7 +10,7 @@
 	const SEASONS = ['Spring', 'Summer', 'Fall', 'Winter'];
 </script>
 
-<div class="w-[700px] text-center">
+<div class="w-[350px] text-center">
 	<span>
 		<Icon
 			key="caret-left"

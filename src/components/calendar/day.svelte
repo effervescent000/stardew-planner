@@ -12,7 +12,7 @@
 </script>
 
 <div
-	class={`w-[100px] h-[100px] border-black ${date % 7 !== 0 && 'border-l'} border-t`}
+	class={`w-[50px] h-[50px] border-black ${date % 7 !== 0 && 'border-l'} border-t`}
 	on:click={() => dateStore.set(date)}
 	on:keypress={() => dateStore.set(date)}
 	role="button"

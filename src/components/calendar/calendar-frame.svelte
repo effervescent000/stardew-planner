@@ -13,7 +13,7 @@
 </script>
 
 <CalendarHeader {season} />
-<div class="grid grid-cols-7 border border-black w-[700px]">
+<div class="grid grid-cols-7 border border-black w-[350px]">
 	{#each DAYS_OF_WEEK as day}
 		<span class="text-center">{day}</span>
 	{/each}
