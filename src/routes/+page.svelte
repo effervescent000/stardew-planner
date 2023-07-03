@@ -9,5 +9,7 @@
 	// LOGIC
 </script>
 
-<CalendarFrame />
-<BirthdayTracker />
+<div class="flex">
+	<CalendarFrame />
+	<BirthdayTracker />
+</div>

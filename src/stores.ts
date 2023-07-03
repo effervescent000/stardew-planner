@@ -1,8 +1,11 @@
 import _ from 'lodash';
 import { derived, writable } from 'svelte/store';
-import { BUNDLE_GROUPS } from './constants/community-center';
+
 import type { BundleGroups } from './interfaces/community-center';
 import type { Person } from './interfaces/people';
+import type { Weather } from './interfaces/planning';
+
+import { BUNDLE_GROUPS } from './constants/community-center';
 import { PEOPLE } from './constants/people-constants';
 
 export const dateStore = writable(0);
@@ -18,6 +21,10 @@ export const birthdayStore = derived(dateStore, ($dateStore) => {
 	});
 	return { upcoming };
 });
+
+export const weatherStore = writable<Weather>('sun');
+
+export const luckStore = writable<number>(2);
 
 const isBrowser = typeof window !== 'undefined';
 

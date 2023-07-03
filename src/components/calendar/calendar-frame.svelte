@@ -1,6 +1,8 @@
 <script lang="ts">
 	import CalendarHeader from './calendar-header.svelte';
 	import Day from './day.svelte';
+	import LuckPicker from './luck-picker.svelte';
+	import WeatherPicker from './weather-picker.svelte';
 	// PROPS
 
 	// STATE
@@ -14,12 +16,16 @@
 	const updateSeason = (num: number) => (season = num);
 </script>
 
-<CalendarHeader {season} {updateSeason} />
-<div class="grid grid-cols-7 border border-black w-[350px]">
-	{#each DAYS_OF_WEEK as day}
-		<span class="text-center">{day}</span>
-	{/each}
-	{#each dates as date}
-		<Day {date} {season} />
-	{/each}
+<div>
+	<CalendarHeader {season} {updateSeason} />
+	<div class="grid grid-cols-7 border border-black w-[350px]">
+		{#each DAYS_OF_WEEK as day}
+			<span class="text-center">{day}</span>
+		{/each}
+		{#each dates as date}
+			<Day {date} {season} />
+		{/each}
+	</div>
+	<WeatherPicker />
+	<LuckPicker />
 </div>
