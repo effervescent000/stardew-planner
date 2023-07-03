@@ -1,27 +1,27 @@
 <script lang="ts">
-	import Checkbox from '../../components/common/checkbox.svelte';
-	import { BUNDLE_GROUPS } from '../../constants/community-center';
+	import { onMount } from 'svelte';
+
+	import { commCenterStore } from '../../stores';
+
+	import BundleGrouping from '../../components/community-center/bundle-grouping.svelte';
 
 	// PROPS
 
 	// STATE
 
 	// LOGIC
+
+	onMount(() => {
+		const unsub = commCenterStore.subscribe((val) =>
+			localStorage.setItem('communityCenter', JSON.stringify(val))
+		);
+
+		return () => {
+			unsub();
+		};
+	});
 </script>
 
-{#each BUNDLE_GROUPS as bundleGroup}
-	<h1>{bundleGroup.name}</h1>
-	<div class="ml-4">
-		{#each bundleGroup.bundles as bundle}
-			<h2>{bundle.name}</h2>
-			<li class="ml-8 list-none">
-				{#each bundle.items as item}
-					<ul>
-						<Checkbox checked={item.completed} />
-						<span>{item.name}</span>
-					</ul>
-				{/each}
-			</li>
-		{/each}
-	</div>
+{#each Object.entries($commCenterStore) as [key, bundleGroup]}
+	<BundleGrouping path={[key]} {bundleGroup} />
 {/each}
