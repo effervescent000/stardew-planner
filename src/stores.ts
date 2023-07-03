@@ -1,11 +1,21 @@
 import _ from 'lodash';
 import { writable } from 'svelte/store';
 import { BUNDLE_GROUPS } from './constants/community-center';
+import type { BundleGroups } from './interfaces/community-center';
 
 export const dateStore = writable(0);
 
+const isBrowser = typeof window !== 'undefined';
+
+const getCenterData = (): BundleGroups => {
+	if (isBrowser) {
+		return JSON.parse(localStorage.getItem('communityCenter') || JSON.stringify(BUNDLE_GROUPS));
+	}
+	return BUNDLE_GROUPS;
+};
+
 const createCenterStore = () => {
-	const { subscribe, set, update } = writable(BUNDLE_GROUPS);
+	const { subscribe, set, update } = writable(getCenterData());
 
 	const updateItemCompletion = (itemPath: string[], newValue: boolean) => {
 		update((cur) => {
@@ -20,5 +30,3 @@ const createCenterStore = () => {
 };
 
 export const commCenterStore = createCenterStore();
-
-// commCenterStore.subscribe((val) => console.log(val));
