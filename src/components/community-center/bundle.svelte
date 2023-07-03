@@ -16,6 +16,6 @@
 </h2>
 <li class="ml-8 list-none">
 	{#each Object.entries(bundle.items) as [key, item]}
-		<BundleItem path={[...path, key]} {item} />
+		<BundleItem path={[...path, 'items', key]} {item} />
 	{/each}
 </li>

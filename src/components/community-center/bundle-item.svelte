@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { BundleItem } from '../../interfaces/community-center';
+	import { commCenterStore } from '../../stores';
 
 	import Checkbox from '../common/checkbox.svelte';
 
@@ -13,6 +14,9 @@
 </script>
 
 <ul>
-	<Checkbox checked={item.completed} />
+	<Checkbox
+		checked={item.completed}
+		callback={() => commCenterStore.updateItemCompletion([...path, 'completed'], !item.completed)}
+	/>
 	<span>{item.name}</span>
 </ul>

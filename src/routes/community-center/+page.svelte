@@ -1,6 +1,6 @@
 <script lang="ts">
 	import BundleGrouping from '../../components/community-center/bundle-grouping.svelte';
-	import { BUNDLE_GROUPS } from '../../constants/community-center';
+	import { commCenterStore } from '../../stores';
 
 	// PROPS
 
@@ -9,6 +9,6 @@
 	// LOGIC
 </script>
 
-{#each Object.entries(BUNDLE_GROUPS) as [key, bundleGroup]}
+{#each Object.entries($commCenterStore) as [key, bundleGroup]}
 	<BundleGrouping path={[key]} {bundleGroup} />
 {/each}

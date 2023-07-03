@@ -14,6 +14,6 @@
 <h1>{bundleGroup.name}</h1>
 <div class="ml-4">
 	{#each Object.entries(bundleGroup.bundles) as [key, bundle]}
-		<Bundle path={[...path, key]} {bundle} />
+		<Bundle path={[...path, 'bundles', key]} {bundle} />
 	{/each}
 </div>
