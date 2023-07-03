@@ -3,6 +3,7 @@
 
 	// PROPS
 	export let season: number;
+	export let updateSeason: (num: number) => {};
 
 	// STATE
 
@@ -10,15 +11,15 @@
 	const SEASONS = ['Spring', 'Summer', 'Fall', 'Winter'];
 </script>
 
-<div class="w-[700px] text-center">
+<div class="w-[350px] text-center">
 	<span>
 		<Icon
 			key="caret-left"
 			callback={() => {
 				if (season === 0) {
-					season = 3;
+					updateSeason(3);
 				} else {
-					season = season - 1;
+					updateSeason(season - 1);
 				}
 			}}
 		/>
@@ -29,9 +30,9 @@
 			key="caret-right"
 			callback={() => {
 				if (season === 3) {
-					season = 0;
+					updateSeason(0);
 				} else {
-					season = season + 1;
+					updateSeason(season + 1);
 				}
 			}}
 		/>
