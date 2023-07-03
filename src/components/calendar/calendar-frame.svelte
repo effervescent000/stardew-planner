@@ -10,14 +10,16 @@
 
 	const DAYS_OF_WEEK = ['M', 'T', 'W', 'Th', 'F', 'Sa', 'Su'];
 	const dates = Array.from({ length: 28 }, (_x, i) => i);
+
+	const updateSeason = (num: number) => (season = num);
 </script>
 
-<CalendarHeader {season} />
+<CalendarHeader {season} {updateSeason} />
 <div class="grid grid-cols-7 border border-black w-[350px]">
 	{#each DAYS_OF_WEEK as day}
 		<span class="text-center">{day}</span>
 	{/each}
 	{#each dates as date}
-		<Day date={date + season * 28} />
+		<Day {date} {season} />
 	{/each}
 </div>

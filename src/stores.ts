@@ -1,9 +1,23 @@
 import _ from 'lodash';
-import { writable } from 'svelte/store';
+import { derived, writable } from 'svelte/store';
 import { BUNDLE_GROUPS } from './constants/community-center';
 import type { BundleGroups } from './interfaces/community-center';
+import type { Person } from './interfaces/people';
+import { PEOPLE } from './constants/people-constants';
 
 export const dateStore = writable(0);
+
+export const birthdayStore = derived(dateStore, ($dateStore) => {
+	const upcoming: Person[] = [];
+
+	PEOPLE.forEach((person) => {
+		const birthdayDelta = person.birthday - $dateStore;
+		if (birthdayDelta >= 0 && birthdayDelta <= 5) {
+			upcoming.push(person);
+		}
+	});
+	return { upcoming };
+});
 
 const isBrowser = typeof window !== 'undefined';
 
